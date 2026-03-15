@@ -1,0 +1,10 @@
+.DS_Store
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+__pycache__/
+build/
+dist/
+tmp/
+data/cleaned/*.csv
+

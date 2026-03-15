@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wine-rating-inference"
+version = "0.1.0"
+description = "Recovered wine-rating analysis project based on the X-Wines dataset."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+analysis = [
+  "jupyter",
+  "matplotlib",
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "scipy",
+  "seaborn",
+  "statsmodels",
+]
+
+[project.scripts]
+wine-project-status = "wine_rating_inference.project_status:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
