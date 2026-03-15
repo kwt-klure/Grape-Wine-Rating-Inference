@@ -14,6 +14,11 @@ class ProjectAsset:
 
 CORE_ASSETS = (
     ProjectAsset(
+        label="canonical_script",
+        relative_path="Xwines.py",
+        description="Script entry point mirroring the recovered notebook flow.",
+    ),
+    ProjectAsset(
         label="canonical_notebook",
         relative_path="Xwines.ipynb",
         description="Recovered notebook aligned with the finished presentation.",

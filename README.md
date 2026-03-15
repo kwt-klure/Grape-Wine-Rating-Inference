@@ -25,6 +25,7 @@ This repo is now organized around that narrative rather than around whatever hap
 
 ## Canonical Artifacts
 
+- Recovered script: [Xwines.py](Xwines.py)
 - Recovered notebook: [Xwines.ipynb](Xwines.ipynb)
 - Official slides: [docs/slides/xwines-final-slides.pdf](docs/slides/xwines-final-slides.pdf)
 - Slides summary: [docs/slides/README.md](docs/slides/README.md)
@@ -38,6 +39,7 @@ This repo is now organized around that narrative rather than around whatever hap
 ```text
 .
 ├── README.md
+├── Xwines.py                     # script mirror of the canonical notebook
 ├── Xwines.ipynb                  # canonical recovered notebook
 ├── data/
 │   ├── README.md
@@ -82,6 +84,12 @@ Execute the canonical notebook in place:
 .venv/bin/jupyter nbconvert --to notebook --execute --inplace Xwines.ipynb --ExecutePreprocessor.timeout=0
 ```
 
+Run the same analysis as a script:
+
+```bash
+.venv/bin/python Xwines.py --run-mode sample
+```
+
 The package metadata lives in [pyproject.toml](pyproject.toml). Analysis dependencies are declared as an optional extra because the recovered project still needs a proper reproducible pipeline before the heavier data science stack becomes the default developer path.
 
 ## Data Policy
@@ -95,9 +103,10 @@ This repo deliberately does not treat raw-data mirroring as part of the project 
 
 ## Current Reality
 
-The repo now has a canonical recovered notebook and a separate legacy archive copy.
+The repo now has a canonical recovered notebook, a matching script entry point, and a separate legacy archive copy.
 
 - `Xwines.ipynb` is the notebook that follows the finished slides in sample mode and can be switched to a fuller reproduction path.
+- `Xwines.py` mirrors that same workflow for terminal-based reruns.
 - `docs/legacy/Xwines-original.ipynb` preserves the broken original notebook for recovery context.
 
 The biggest remaining gap is no longer notebook structure. It is result fidelity: if we want to match the June 14, 2024 slides even more closely, the next step is to tune the full-data path and appendix settings against the recovered cleaned inputs.

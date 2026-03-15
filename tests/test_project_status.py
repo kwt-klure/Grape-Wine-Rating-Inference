@@ -22,6 +22,7 @@ class ProjectStatusTests(unittest.TestCase):
     def test_core_assets_include_official_slides(self) -> None:
         labels = {asset.label for asset in CORE_ASSETS}
         self.assertIn("official_slides", labels)
+        self.assertIn("canonical_script", labels)
         self.assertIn("canonical_notebook", labels)
         self.assertIn("legacy_notebook", labels)
 
