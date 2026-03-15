@@ -4,6 +4,7 @@ This repository is no longer being treated as a loose archive of files. It now h
 
 ## What Is Canonical Right Now
 
+- The recovered notebook in `Xwines.ipynb`
 - The completed presentation in `docs/slides/xwines-final-slides.pdf`
 - The slide summary in `docs/slides/README.md`
 - The cleaned local inputs under `data/cleaned/` as workspace assets
@@ -11,23 +12,29 @@ This repository is no longer being treated as a loose archive of files. It now h
 
 ## What Is Still Legacy
 
-- `Xwines.ipynb` is a recovered exploratory notebook, not a reproducible implementation of the final slide deck
+- `docs/legacy/Xwines-original.ipynb` is the archived copy of the original broken notebook
 - `docs/ppt-notion/` is an archived presentation snapshot from the earlier project state
+
+## Current Alignment
+
+The project now has a notebook that mirrors the slide structure much more closely:
+
+- the notebook follows the `winery × vintage` pivot explicitly
+- the red-wine cleaning rules are now implemented in reusable project code
+- the recommendation ranking and Bonferroni filtering are no longer mixed with unrelated SQLite or Windows-path experiments
+- the Naive Bayes and decision-tree sections are isolated as appendices instead of polluting the mainline analysis
 
 ## Gap Between Slides And Code
 
-The final slides tell a much clearer story than the current notebook implementation:
+The remaining differences are mostly about fidelity and tuning, not notebook chaos:
 
-- the slides argue for a `winery × vintage` pivot after the initial high-cardinality OLS framing
-- they document a concrete red-wine cleaning policy
-- they present Bonferroni-style recommendation logic for stable ranking
-- they add later classification experiments with Naive Bayes and a decision tree
-
-The current notebook does not yet implement that workflow cleanly or reproducibly. It still contains hard-coded local paths, broken imports, mixed experiments, and code fragments that do not match the final presentation narrative.
+- sample mode intentionally lowers the label-count threshold so committed outputs stay runnable
+- the recommendation top list is method-aligned, but not guaranteed to be numerically identical to the slide deck
+- the appendix classification metrics are now reproducible, but still need tuning if the goal is to get closer to the reported slide values
 
 ## Immediate Next Projectization Targets
 
-1. Extract the red-wine cleaning workflow into a script or module.
-2. Rebuild the `winery × vintage` OLS path from the slides as a reproducible analysis step.
-3. Separate recommendation analysis from later classification experiments.
-4. Replace the notebook-first workflow with scriptable entry points while keeping notebooks only for exploration or reporting.
+1. Tune full-mode recommendation settings against the recovered cleaned data until the ranking table is closer to the finished slides.
+2. Decide whether the appendix classification sections should target fidelity to the reported slide metrics or prioritize cleaner modeling choices.
+3. Add script-level entry points for the recommendation pipeline so notebook execution is not the only way to reproduce the analysis.
+4. Document the full-data runtime expectations more explicitly for reruns on large local hardware.

@@ -14,6 +14,16 @@ class ProjectAsset:
 
 CORE_ASSETS = (
     ProjectAsset(
+        label="canonical_notebook",
+        relative_path="Xwines.ipynb",
+        description="Recovered notebook aligned with the finished presentation.",
+    ),
+    ProjectAsset(
+        label="legacy_notebook",
+        relative_path="docs/legacy/Xwines-original.ipynb",
+        description="Archived copy of the original broken notebook.",
+    ),
+    ProjectAsset(
         label="official_slides",
         relative_path="docs/slides/xwines-final-slides.pdf",
         description="Canonical finished presentation artifact.",
@@ -27,11 +37,6 @@ CORE_ASSETS = (
         label="project_status_doc",
         relative_path="docs/project-status.md",
         description="Repo-level status and next-step document.",
-    ),
-    ProjectAsset(
-        label="legacy_notebook",
-        relative_path="Xwines.ipynb",
-        description="Recovered exploratory notebook from the original project.",
     ),
     ProjectAsset(
         label="cleaned_panel",
@@ -102,4 +107,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -12,6 +12,7 @@ dependencies = []
 
 [project.optional-dependencies]
 analysis = [
+  "ipykernel",
   "jupyter",
   "matplotlib",
   "numpy",
@@ -30,4 +31,3 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
-

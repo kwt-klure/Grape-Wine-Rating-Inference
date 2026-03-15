@@ -25,10 +25,12 @@ This repo is now organized around that narrative rather than around whatever hap
 
 ## Canonical Artifacts
 
+- Recovered notebook: [Xwines.ipynb](Xwines.ipynb)
 - Official slides: [docs/slides/xwines-final-slides.pdf](docs/slides/xwines-final-slides.pdf)
 - Slides summary: [docs/slides/README.md](docs/slides/README.md)
 - Project status and upgrade notes: [docs/project-status.md](docs/project-status.md)
 - Cleaned local inputs: [data/README.md](data/README.md)
+- Legacy notebook archive: [docs/legacy/Xwines-original.ipynb](docs/legacy/Xwines-original.ipynb)
 - Legacy presentation archive: [docs/ppt-notion/README.md](docs/ppt-notion/README.md)
 
 ## Repo Structure
@@ -36,11 +38,12 @@ This repo is now organized around that narrative rather than around whatever hap
 ```text
 .
 ├── README.md
-├── Xwines.ipynb                  # recovered legacy notebook
+├── Xwines.ipynb                  # canonical recovered notebook
 ├── data/
 │   ├── README.md
 │   └── cleaned/
 ├── docs/
+│   ├── legacy/                   # archived copy of the original broken notebook
 │   ├── project-status.md
 │   ├── ppt-notion/               # archived Notion-era presentation materials
 │   └── slides/                   # canonical finished presentation
@@ -54,6 +57,13 @@ This repo is now organized around that narrative rather than around whatever hap
 
 ## Working With The Repo
 
+Install the optional analysis stack into a local virtual environment when you want to execute the recovered notebook end to end:
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -e '.[analysis]'
+```
+
 Quick status check:
 
 ```bash
@@ -64,6 +74,12 @@ Basic test run:
 
 ```bash
 python3 -m unittest discover -s tests
+```
+
+Execute the canonical notebook in place:
+
+```bash
+.venv/bin/jupyter nbconvert --to notebook --execute --inplace Xwines.ipynb --ExecutePreprocessor.timeout=0
 ```
 
 The package metadata lives in [pyproject.toml](pyproject.toml). Analysis dependencies are declared as an optional extra because the recovered project still needs a proper reproducible pipeline before the heavier data science stack becomes the default developer path.
@@ -79,6 +95,9 @@ This repo deliberately does not treat raw-data mirroring as part of the project 
 
 ## Current Reality
 
-The final slides are coherent. The current notebook is not.
+The repo now has a canonical recovered notebook and a separate legacy archive copy.
 
-`Xwines.ipynb` is still a legacy exploratory artifact with hard-coded local paths, mixed experiments, and broken cells. It is preserved for recovery context, but it should not be mistaken for the final implementation of the slide deck. The next real upgrade step is to turn the slide narrative into reproducible code modules and scripts.
+- `Xwines.ipynb` is the notebook that follows the finished slides in sample mode and can be switched to a fuller reproduction path.
+- `docs/legacy/Xwines-original.ipynb` preserves the broken original notebook for recovery context.
+
+The biggest remaining gap is no longer notebook structure. It is result fidelity: if we want to match the June 14, 2024 slides even more closely, the next step is to tune the full-data path and appendix settings against the recovered cleaned inputs.

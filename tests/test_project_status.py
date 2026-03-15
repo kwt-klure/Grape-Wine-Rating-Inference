@@ -22,6 +22,7 @@ class ProjectStatusTests(unittest.TestCase):
     def test_core_assets_include_official_slides(self) -> None:
         labels = {asset.label for asset in CORE_ASSETS}
         self.assertIn("official_slides", labels)
+        self.assertIn("canonical_notebook", labels)
         self.assertIn("legacy_notebook", labels)
 
     def test_render_report_mentions_project(self) -> None:
@@ -32,4 +33,3 @@ class ProjectStatusTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-
